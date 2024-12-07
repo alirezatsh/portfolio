@@ -10,7 +10,7 @@ This project is a simple web application built using **Flask**, **HTML**, **CSS*
 
 ### Project Structure
 
-- **app.py**: The main Flask application file, where routes and logic are defined.
+- **portfolio.py**: The main Flask application file, where routes and logic are defined.
 - **templates/**: Contains HTML files for the frontend.
 - **static/**: Holds CSS files for styling the application.
 
