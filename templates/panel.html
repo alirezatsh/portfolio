@@ -1,0 +1,56 @@
+{% extends 'inc/base.html' %}
+
+{% block title %}  {% endblock %}
+
+{% block head %} 
+<link rel="stylesheet" href="{{url_for('static' , filename = 'panel.css')}}">
+{% endblock %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message}}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+
+<main>
+
+  <div class="right">
+    <form action="" method="post">     
+        <div class="home">
+            <h1><a href="{{url_for('index')}} " style="color: white;">خانه</a></h1>
+        </div>
+        <div class="create">
+            <h2 style="color: wheat;">نمونه کارهای خود را از این قسمت وارد کنید</h2>
+            <input type="text" name="i_name" placeholder="نام نمونه کار"><br>
+            <input type="submit" value="ثبت پروژه">
+        </div>
+    </form>
+  </div>
+    
+    <div class="left">
+       
+    {% for contact in contacts %}
+        <div class="info-box">
+            <p style="background-color: rgb(15, 30, 9); color: white; padding: 10px; "> {{contact.id}} </p>
+            <h2 style="padding: 20px;"> {{contact.name}} </h2>
+            <h3 style="padding: 20px;"> {{contact.email}} </h3>
+            <h5 style="padding: 20px;"> {{contact.title}} </h5>
+            <p style="padding: 20px;"> {{contact.text}} </p>
+            <a href="{{url_for('delete2' , contact_id = contact.id)}}" style="background-color: red; color: white; padding: 12px 20px; border-radius: 5px;text-decoration: none;"> پاک کردن</a>
+        </div>
+    {% endfor  %}
+    </div>
+
+</main>
+
+
+{% endblock %}
